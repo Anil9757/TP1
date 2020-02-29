@@ -27,8 +27,10 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Login"
                     name="login"
+                     :rules="mailRules"
+                    label="Email"
+                    required
                     type="text"
                     v-model="input.username"
                   ></v-text-field>
@@ -36,6 +38,7 @@
                   <v-text-field
                     id="password"
                     label="Password"
+                    :rules="passwordRules"
                     name="password"
                     type="password"
                     v-model="input.password"
@@ -58,27 +61,33 @@
 <script>
 export default {
   name: 'Login',
-  data () {
-    return {
-      input: {
-        username: '',
-        password: ''
-      }
-    }
-  },
+  data: () => ({
+    state: false,
+    valid: false,
+    username: '',
+    password: '',
+    todos: [],
+    mailRules: [
+      v => !!v || 'Email is required',
+      v => v.match(/^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/) || 'Wrong email'
+    ],
+    passwordRules: [
+      v => !!v || 'Password is required'
+    ]
+  }),
   methods: {
-    login () {
-      // eslint-disable-next-line eqeqeq
-      if (this.input.username != '' && this.input.password != '') {
-        // eslint-disable-next-line eqeqeq
-        if (this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-          this.$emit('authenticated', true)
-          this.$router.replace({ name: 'secure' })
-        } else {
-          console.log('The username and / or password is incorrect')
-        }
-      } else {
-        console.log('A username and password must be present')
+    async login () {
+      const { username, password } = this
+      try {
+        const result = await this.axios.post('http://localhost:3000/api/v1/login', {
+          username,
+          password
+        })
+        this.user = result.data
+        this.loggedIn = true
+        this.$router.push('/Main')
+      } catch (err) {
+        this.errorLogin = err
       }
     }
   }
