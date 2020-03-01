@@ -39,16 +39,19 @@
 
     <v-content>
       <HelloWorld/>
+      <AddExercice/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from '@/components/HelloWorld'
+import AddExercice from '@/components/AddExercice'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    AddExercice
   },
   data: () => ({
     //
