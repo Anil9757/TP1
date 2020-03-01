@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Home from '@/components/HelloWorld'
-import Login from '@/components/Login'
+import Login from '@/views/Login'
+import Main from '@/components/MainPage'
 import axios from 'axios'
 import VueRouter from 'vue-router'
 
@@ -9,8 +9,9 @@ Vue.use(VueRouter)
 function createRouter (state) {
   async function beforeEnter (to, from, next) {
     try {
-      const { data: user } = await axios.get('/api/me')
+      const { data: user } = await axios.get('http://localhost:3000/api/v1/me')
       state.user = user
+      console.log(state.user)
       next()
     } catch (err) {
       console.log('err', err)
@@ -20,8 +21,8 @@ function createRouter (state) {
   const routes = [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Main',
+      component: Main,
       beforeEnter
     },
     {
