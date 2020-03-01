@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Login from '@/components/HelloWorld'
 import Main from '@/components/MainPage'
+import Exercice from '@/components/AddExercice'
 import axios from 'axios'
 import VueRouter from 'vue-router'
 
@@ -29,6 +30,11 @@ function createRouter (state) {
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/exercice',
+      name: 'Exercice',
+      component: Exercices
     }
   ]
 
