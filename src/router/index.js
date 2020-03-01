@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Login from '@/views/Login'
+import Login from '@/components/HelloWorld'
 import Main from '@/components/MainPage'
 import axios from 'axios'
 import VueRouter from 'vue-router'
