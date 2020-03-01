@@ -1,11 +1,5 @@
 <template>
-<div id="app">
-  <v-app id="inspire">
-    <v-content>
-      <v-container
-        fluid
-        fill-height
-      >
+  <v-container>
         <v-layout
           align-center
           justify-center
@@ -25,42 +19,35 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form v-model="valid" @submit.prevent="login">
                   <v-text-field
-                    name="login"
-                     :rules="mailRules"
-                    label="Email"
-                    required
-                    type="text"
-                    v-model="input.username"
+                     v-model="username"
+                :rules="mailRules"
+                label="Email"
+                required
                   ></v-text-field>
 
                   <v-text-field
-                    id="password"
-                    label="Password"
-                    :rules="passwordRules"
-                    name="password"
-                    type="password"
-                    v-model="input.password"
+                   v-model="password"
+                :rules="passwordRules"
+                label="Password"
+                required
                   ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" v-on:click="login">Login</v-btn>
+                <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
         </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
-</div>
+  </v-container>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'HelloWorld',
   data: () => ({
     state: false,
     valid: false,
@@ -90,9 +77,9 @@ export default {
         this.errorLogin = err
       }
     }
+
   }
 }
-
 </script>
 
 <style scoped>
