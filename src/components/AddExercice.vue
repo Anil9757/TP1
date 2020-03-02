@@ -137,7 +137,7 @@ export default {
     },
     async saveExercise () {
       try {
-        const response = await this.$http.post('http://localhost:3000/api/v1/exercice', {
+        const response = await this.axios.post('http://localhost:3000/api/v1/exercice', {
           creation_date: new Date(),
           title: this.title,
           instructions: this.instructions,
@@ -152,7 +152,7 @@ export default {
     },
     async runSandbox () {
       try {
-        const response = await this.$http.post('http://localhost:3000/api/v1/exercice/sandbox', {
+        const response = await this.axios.post('http://localhost:3000/api/v1/exercice/sandbox', {
           tests: this.testsCode,
           lang: this.language,
           solution: this.sandboxCode
