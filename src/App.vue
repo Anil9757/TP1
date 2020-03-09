@@ -45,14 +45,9 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
-import AddExercice from '@/components/AddExercice'
+
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-    AddExercice
-  },
   data: () => ({
     //
   })
