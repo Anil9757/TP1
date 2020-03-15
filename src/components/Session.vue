@@ -9,7 +9,7 @@
       outlined
     >
       <v-card>
-        <h4><router-link :to="{ name: 'exercise', params: { seId: sessionId, exId: exercise.id } }">{{exercise.title}}</router-link></h4>
+        <h4><router-view :to="{ name: 'exercise', params: { seId: sessionId, exId: exercise.id } }">{{exercise.title}}</router-view></h4>
       </v-card><br>
     </div>
   </div>
