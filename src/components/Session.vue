@@ -5,7 +5,6 @@
       v-for="exercise in getExercisesBySessionId(sessionId)"
       :key="exercise.id"
       class="mx-auto"
-      max-width="344"
       outlined
     >
       <v-card>
