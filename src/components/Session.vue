@@ -20,13 +20,6 @@ import { mapState, mapGetters, mapActions } from "vuex";
 import Session from '../components/Session.vue'
 export default {
   name: "Module",
-  props: {
-    sessionId: Number,
-  },
-  data() {
-    return {
-    };
-  },
   computed: {
     ...mapState(["sessions"]),
     ...mapState(["exercises"]),
